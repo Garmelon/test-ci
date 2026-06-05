@@ -2,15 +2,14 @@ name: Merge PR
 
 on:
   workflow_dispatch:
-    inputs:
-      pr:
-        description: The number of the PR whose adaptation PR to merge.
-        required: true
-        type: number
+    # inputs:
+    #   pr:
+    #     description: The number of the PR whose adaptation PR to merge.
+    #     required: true
+    #     type: number
 
 permissions:
   contents: write
-  # pull-requests: write
 
 jobs:
   main:
@@ -24,6 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Merge PR
+      - name: Merge PRs
         run: |
-          gh pr merge $PR --squash
+          gh pr merge 2 --squash
+          gh pr merge 3 --squash
