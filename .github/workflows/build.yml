@@ -1,0 +1,14 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  main:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Confirm
+        run: echo hi

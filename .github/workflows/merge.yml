@@ -1,0 +1,28 @@
+name: Merge PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: The number of the PR whose adaptation PR to merge.
+        required: true
+        type: number
+
+permissions:
+  pull-requests: write
+
+jobs:
+  main:
+    runs-on: ubuntu-slim
+
+    env:
+      PR: ${{ github.event.inputs.pr }}
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Merge PR
+        run: |
+          gh pr merge $PR --squash
